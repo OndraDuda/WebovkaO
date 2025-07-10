@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfólio Ondřeje Dudy – vývojáře se zaměřením na weby, databáze a programování.">
+    <meta property="og:title" content="Ondřej Duda | Creative Developer">
+    <meta property="og:description" content="Moderní weby, programování v C# a Pythonu, databáze.">
+    <meta property="og:image" content="https://source.unsplash.com/random/800x800/?developer">
+    <meta property="og:type" content="website">
+
+    <title>Ondřej Duda | Creative Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #6c5ce7;
+            --secondary: #a8a5e6;
+            --accent: #ffd700;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+            background: #0f0f1f;
+        }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 0;
+            backdrop-filter: blur(10px);
+            background: rgba(15, 15, 31, 0.8);
+            z-index: 1000;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .about {
+            padding: 8rem 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 1rem;
+            box-shadow: 0 0 30px rgba(108, 92, 231, 0.3);
+            transition: 0.3s;
+        }
+
+        .about-img:hover {
+            transform: translateY(-10px);
+        }
+
+        .contact {
+            padding: 8rem 2rem;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            padding: 1.5rem 3rem;
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: 0.3s;
+            background: rgba(108, 92, 231, 0.1);
+        }
+
+        .blurred-section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }   
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .logo-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .logo-info {
+            position: absolute;
+            top: 140%;
+            left: 0;
+            width: 300px;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            color: white;
+            border-radius: 1rem;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 999;
+        }
+
+        .logo-container:hover .logo-info {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .projects {
+            padding: 8rem 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            color: white;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: rgba(108, 92, 231, 0.1);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 20px rgba(108, 92, 231, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-card h3 {
+            margin-bottom: 0.75rem;
+            color: var(--accent);
+        }
+
+        .project-card a {
+            color: var(--accent);
+            text-decoration: underline;
+            font-weight: 600;
+        }
+
+
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        html { 
+            scroll-behavior: smooth;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+
+    <nav>
+        <div class="nav-content">
+            <div class="logo-container">
+                <a href="#" class="logo">OD</a>
+                <div class="logo-info">
+                    <strong>Ondřej Duda</strong><br>
+                    Student Střední Školy Teleinformatiky Ostrava-Poruba<br>
+                    Obor: Informační technologie<br>
+                    17 let (narozen 17. 5. 2008)<br>
+                    Ostrava-Jih<br>
+                    Baví mě: programování (C#, Python), databáze a závodní hry
+                </div>
+            </div>
+            <div class="nav-links">
+                <a href="#about">O mně</a>
+                <a href="#projects">Projekty</a>
+                <a href="#contact">Kontakt</a>
+            </div>
+        </div>
+    </nav>
+
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="floating">Vítejte ve světě kreativního vývoje</h1>
+            <p>Programmer and Database Developer and Manager</p>
+            <div class="social-links">
+                <a href="mailto:dudic.ondra@gmail.com" class="social-link">
+                    <i class="fas fa-envelope"></i>
+                    E-mail
+                </a>
+                <a href="https://discord.com/users/801752475493072896" class="social-link" target="_blank">
+                    <i class="fab fa-discord"></i>
+                    Discord
+                </a>
+                <a href="https://github.com/OndraDuda" class="social-link" target="_blank">
+                    <i class="fab fa-github"></i>
+                    GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="about-content">
+            <img src="https://source.unsplash.com/random/800x800/?developer" alt="Ondřej Duda" class="about-img">
+            <div>
+                <h2>O mně</h2>
+                <p>Jsem student Střední školy Teleinformatiky v Ostravě-Porubě, obor Informační technologie. Je mi 17 let a bydlím v Ostravě-Jihu. Baví mě programování, zejména v jazycích C# a Python, práce s databázemi a také závodní hry jako Real Racing.</p>
+            
+                <h3>Specializuji se na:</h3>
+                <ul>
+                    <li>Programování v C# a Pythonu</li>
+                    <li>Vývoj webových stránek (HTML, CSS)</li>
+                    <li>Správa a vývoj databází</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="projects" class="projects blurred-section" style="padding: 8rem 2rem;">
+        <div class="projects-content" style="max-width: 1200px; margin: 0 auto;">
+            <h2>Projekty</h2>
+            <div class="projects-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                <!-- Projekt 1 -->
+                <div class="project-card" style="background: rgba(108, 92, 231, 0.1); padding: 1.5rem; border-radius: 1rem; backdrop-filter: blur(10px); box-shadow: 0 0 20px rgba(108, 92, 231, 0.3);">
+                    <h3>Aplikace napojena na dabazi pro měření teplot</h3>
+                    <p>Vyvinul jsem aplikaci pro ukládáíní a zobrazování dat podle uložených měření(prozatím na tlačítko random)</p>
+                    <a href="#" style="color: var(--accent); text-decoration: underline;">Více informací</a>
+                </div>
+
+                <!-- Projekt 2 -->
+                <div class="project-card" style="background: rgba(108, 92, 231, 0.1); padding: 1.5rem; border-radius: 1rem; backdrop-filter: blur(10px); box-shadow: 0 0 20px rgba(108, 92, 231, 0.3);">
+                    <h3>Webová stránka pro školní kroužek</h3>
+                    <p>Vytvořil jsem moderní responzivní web pomocí HTML, CSS a JavaScriptu pro školní IT kroužek.</p>
+                    <a href="#" style="color: var(--accent); text-decoration: underline;">Zobrazit projekt</a>
+                </div>
+            
+                <!-- Projekt 3 -->
+                <div class="project-card" style="background: rgba(108, 92, 231, 0.1); padding: 1.5rem; border-radius: 1rem; backdrop-filter: blur(10px); box-shadow: 0 0 20px rgba(108, 92, 231, 0.3);">
+                    <h3>Automatizace databázových záloh</h3>
+                    <p>Napsal jsem skript v Pythonu, který pravidelně zálohuje databáze a ukládá je bezpečně na cloud.</p>
+                    <a href="#" style="color: var(--accent); text-decoration: underline;">Podrobnosti</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="contact" class="contact blurred-section">
+        <h2>Kontakt</h2>
+        <p>Máš zájem o spolupráci nebo se chceš jen na něco zeptat? Napiš mi!</p>
+
+        <form action="mailto:dudic.ondra@gmail.com" method="POST" enctype="text/plain" style="max-width: 600px; margin: 2rem auto 0;">
+            <input type="text" name="name" placeholder="Tvé jméno" required style="width: 100%; padding: 1rem; margin-bottom: 1rem; border-radius: 10px; border: none;">
+            <input type="email" name="email" placeholder="Tvůj e-mail" required style="width: 100%; padding: 1rem; margin-bottom: 1rem; border-radius: 10px; border: none;">
+            <textarea name="message" placeholder="Zpráva" rows="6" required style="width: 100%; padding: 1rem; margin-bottom: 1rem; border-radius: 10px; border: none;"></textarea>
+            <button type="submit" style="padding: 1rem 2rem; border: none; border-radius: 50px; background: var(--primary); color: white; cursor: pointer; transition: 0.3s;">
+                Odeslat
+            </button>
+        </form>
+
+        <div class="social-links">
+            <a href="mailto:dudic.ondra@gmail.com" class="social-link">
+                <i class="fas fa-envelope"></i>
+                E-mail
+            </a>
+            <a href="https://discord.com/users/801752475493072896" class="social-link" target="_blank">
+                <i class="fab fa-discord"></i>
+                Discord
+            </a>
+            <a href="https://github.com/OndraDuda" class="social-link" target="_blank">
+                <i class="fab fa-github"></i>
+                GitHub
+            </a>
+        </div>
+    </section>
+
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80 },
+                color: { value: '#6c5ce7' },
+                shape: { type: 'circle' },
+                opacity: { value: 0.5 },
+                size: { value: 3 },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: 'none',
+                    random: false,
+                    straight: false,
+                    out_mode: 'out',
+                    bounce: false,
+                }
+            },
+            interactivity: {
+                detect_on: 'canvas',
+                events: {
+                    onhover: { enable: true, mode: 'repulse' },
+                    onclick: { enable: true, mode: 'push' },
+                    resize: true
+                }
+            }
+        });
+    </script>
+</body>
+</html>
